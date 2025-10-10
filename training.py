@@ -6,8 +6,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Dataset
-DATA_ROOT = r"C:\Users\maddo\Downloads"
-TRAIN_SEQS = [r"12_21_2020_ec_hallways_run4\single_chip\heatmaps"]
+DATA_ROOT = r"D:\ColoRadar"
+TRAIN_SEQS = [r"12_21_2020_ec_hallways_run4\12_21_2020_ec_hallways_run4\single_chip\heatmaps",
+              r"12_21_2020_ec_hallways_run3\12_21_2020_ec_hallways_run3\single_chip\heatmaps",
+              r"12_21_2020_ec_hallways_run2\12_21_2020_ec_hallways_run2\single_chip\heatmaps",
+              r"12_21_2020_ec_hallways_run1\12_21_2020_ec_hallways_run1\single_chip\heatmaps",
+              r"12_21_2020_ec_hallways_run0\12_21_2020_ec_hallways_run0\single_chip\heatmaps",
+              r"12_21_2020_arpg_lab_run0\12_21_2020_arpg_lab_run0\single_chip\heatmaps",
+              r"12_21_2020_arpg_lab_run1\12_21_2020_arpg_lab_run1\single_chip\heatmaps",
+              r"12_21_2020_arpg_lab_run2\12_21_2020_arpg_lab_run2\single_chip\heatmaps",
+              r"12_21_2020_arpg_lab_run3\12_21_2020_arpg_lab_run3\single_chip\heatmaps"]
 
 ds = ColoradarHeatmapDataset(
     DATA_ROOT,
@@ -16,6 +24,12 @@ ds = ColoradarHeatmapDataset(
     heatmap_shape=(2, 256, 256),
     normalization="zscore",
 )
+
+print("Total samples:", len(ds))
+print("First few paths:")
+for i in range(min(5, len(ds))):
+    print("  ", ds.samples[i][0])
+
 
 loader = DataLoader(ds, batch_size=2, shuffle=False)
 
