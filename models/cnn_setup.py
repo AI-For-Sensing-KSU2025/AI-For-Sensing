@@ -2,7 +2,7 @@
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
+import torch.nn.functional as f
 
 class RadarCNN(nn.Module):
     def __init__ (self, in_channels=1, num_classes=4, base=32, use_bias=False):
@@ -17,12 +17,12 @@ class RadarCNN(nn.Module):
 
         self.fc = nn.Linear(base*4, num_classes, bias=True)
     def forward(self, x):
-        x = F.relu(self.bn1(self.conv1(x)))
-        x = F.avg_pool2d(x,2)
-        x = F.relu(self.bn2(self.conv2(x)))
-        x = F.avg_pool2d(x,2)
-        x = F.relu(self.bn3(self.conv3(x)))
-        x = self.avg(x,2).flatten(1)
+        x = f.relu(self.bn1(self.conv1(x)))
+        x = f.avg_pool2d(x, 2)
+        x = f.relu(self.bn2(self.conv2(x)))
+        x = f.avg_pool2d(x, 2)
+        x = f.relu(self.bn3(self.conv3(x)))
+        x = self.avg(x).flatten(1)
 
         return self.fc(x)
 
