@@ -10,13 +10,23 @@ body {
     font-family: "sans-serif";
 }
 h1 {
-    color: #806708;;
+    color: #fbbb2c;;
     font-family: "sans-serif";
     text-align: center;
 }
 h2 {
     color: #07060c;
     font-family: "sans-serif";
+}
+img {
+
+    height: 300px;
+    width: 700px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 .grid-container {
 
@@ -41,13 +51,9 @@ p {
 
 }
 .img{
-    height: 500px;
+    height: 200px;
     width: 500px;
-    margin-top: 0px;
-    margin-bottom: 100px;
-    margin-right: 150px;
-    margin-left: 80px;
-    float: left;
+    text-align: center;
 
 }
 .imagegroup{
