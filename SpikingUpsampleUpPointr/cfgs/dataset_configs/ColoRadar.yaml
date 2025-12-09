@@ -1,0 +1,5 @@
+NAME: ColoRadar
+DATA_PATH: data/ColoRadar/pcd/
+N_POINTS: 8192
+INPUT_PATH: data/ColoRadar/pcd/input/%s
+GT_PATH: data/ColoRadar/pcd/gt/%s
