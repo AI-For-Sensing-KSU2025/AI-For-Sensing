@@ -1,6 +1,6 @@
-# UpPoinTr
+# UpPoinTr With SNN Upscaler
 
-This repo contains the code for UpPoinTr, based on AdaPoinTr and seedformer. 
+This repo is based off of the code for UpPoinTr
 
 UpPoinTr Architecture:
 
@@ -10,7 +10,15 @@ UpPoinTr Architecture:
 
 ## Usage
 
+We created a new model called SpikingUpsamplingUpPoinTr. This converts the upsample transformer used in the upsampleing layers at the end of the UpPoinTr model into a spiking neural network. 
 
+We highly recommend checking out the original UpPoinTr pipeline:
+[UpPoinTr](https://github.com/yuxumin/PoinTr)
+
+We used [RMap](https://github.com/arpg/RMap) to create the point clouds below 
+
+
+The rest of this document is the same as UpPoinTr but with slight adjustments for our model including the additional requirement of spikingjelly which was used to create the SNN.
 ### Requirements
 
 ```
@@ -27,6 +35,7 @@ or manually install
 - timm
 - open3d
 - tensorboardX
+- spikingjelly
 
 ```
 pip install -r requirements.txt
@@ -68,7 +77,7 @@ To inference sample(s) with pretrained model
 
 ```
 python tools/inference.py \
-${UpPOINTR_CONFIG_FILE} ${UpPOINTR_CHECKPOINT_FILE} \
+${SpikingUpsampleUpPOINTR_CONFIG_FILE} ${SpikingUpsampleUpPOINTR_CHECKPOINT_FILE} \
 [--pc_root <path> or --pc <file>] \
 [--save_vis_img] \
 [--out_pc_root <dir>] \
@@ -77,7 +86,7 @@ ${UpPOINTR_CONFIG_FILE} ${UpPOINTR_CHECKPOINT_FILE} \
 For example, inference all samples under `demo/` and save the results under `inference_result/`
 ```
 python tools/inference.py \
-cfgs/ColoRadar_models/UpPoinTr.yaml ckpts/UpPoinTr.pth \
+cfgs/ColoRadar_models/SpikingUpsampleUpPoinTr.yaml ckpts/SpikingUpsampleUpPoinTr.pth \
 --pc_root demo/ \ 
 --save_vis_img  \
 --out_pc_root inference_result/ \
@@ -99,8 +108,8 @@ bash ./scripts/test.sh <GPU_IDS>  \
 Test the UpPoinTr pretrained model on the ColoRadar dataset:
 ```
 bash ./scripts/test.sh 0 \
-    --ckpts ./pretrained/UpPoinTr.pth \
-    --config ./cfgs/ColoRadar_models/UpPoinTr.yaml \
+    --ckpts ./pretrained/SpikingUpsampleUpPoinTr.pth \
+    --config ./cfgs/ColoRadar_models/SpikingUpsampleUpPoinTr.yaml \
     --exp_name example
 ```
 
@@ -125,30 +134,25 @@ bash ./scripts/train.sh <GPUIDS> \
     [--val_freq <int>]
 ```
 ####  Some examples:
-Train  UpPoinTr model on ColoRadar benchmark with 2 gpus:
+Train  SpikingUpsampleUpPoinTr model on ColoRadar benchmark with 2 gpus:
 ```
 CUDA_VISIBLE_DEVICES=0,1 bash ./scripts/dist_train.sh 2 13232 \
-    --config ./cfgs/ColoRadar_models/UpPoinTr.yaml \
+    --config ./cfgs/ColoRadar_models/SpikingUpsampleUpPoinTr.yaml \
     --exp_name example
 ```
 Resume a checkpoint:
 ```
 CUDA_VISIBLE_DEVICES=0,1 bash ./scripts/dist_train.sh 2 13232 \
-    --config ./cfgs/ColoRadar_models/UpPoinTr.yaml \
+    --config ./cfgs/ColoRadar_models/SpikingUpsampleUpPoinTr.yaml \
     --exp_name example --resume
 ```
 
 
 
-## License
-MIT License
-
-## Acknowledgements
-Code to support UpPoinTr model and ColoRadar dataset has been added to the original [PoinTr](https://github.com/yuxumin/PoinTr/tree/master) github repo
+## Kennesaw State University 
 
 
-## Citation
-If you find our work useful in your research, please consider citing: 
+## UpPoinTr Citations
 ```
 @article{mopidevi2023rmap,
   title={RMap: Millimeter-Wave Radar Mapping Through Volumetric Upsampling},
