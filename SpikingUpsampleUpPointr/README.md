@@ -8,17 +8,17 @@ UpPoinTr Architecture:
 ![intro](./UpPoinTr.png)
 
 
-## Usage
 
 We created a new model called SpikingUpsamplingUpPoinTr. This converts the upsample transformer used in the upsampleing layers at the end of the UpPoinTr model into a spiking neural network. 
 
 We highly recommend checking out the original UpPoinTr pipeline:
-[UpPoinTr](https://github.com/yuxumin/PoinTr)
+[UpPoinTr](https://github.com/ajaymopidevi/UpPoinTr)
 
 We used [RMap](https://github.com/arpg/RMap) to create the point clouds below 
 
 
 The rest of this document is the same as UpPoinTr but with slight adjustments for our model including the additional requirement of spikingjelly which was used to create the SNN.
+## Usage
 ### Requirements
 
 ```
