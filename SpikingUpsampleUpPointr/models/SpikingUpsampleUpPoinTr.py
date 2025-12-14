@@ -1,6 +1,8 @@
 ##############################################################
 # % Author: Ajay Narasimha Mopidevi
 # % Date:15/18/2023
+# Spiking Modification: Maddox McDaniel
+# 2025
 ###############################################################
 
 import torch
@@ -339,7 +341,7 @@ class TransformerEncoder(nn.Module):
 
 
 
-
+# Spiking Implementation 
 class SpikingConv1dBlock(nn.Module):
     """
     time-sequence Conv1d + LIF block.
