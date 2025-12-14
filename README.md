@@ -5,7 +5,7 @@ This repo is based off of the code for UpPoinTr
 UpPoinTr Architecture:
 
 
-![intro](./UpPoinTr.png)
+![intro](./Picture1.png)
 
 
 ## Usage
