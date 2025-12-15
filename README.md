@@ -16,7 +16,7 @@ We highly recommend checking out the original UpPoinTr pipeline:
 [UpPoinTr](https://github.com/yuxumin/PoinTr)
 [UpPoinTr](https://github.com/ajaymopidevi/UpPoinTr)
 
-We used [RMap](https://github.com/arpg/RMap) to create the point clouds below 
+We were using [RMap](https://github.com/arpg/RMap) to visualize the pointclouds that UpPoinTr outputted but are current unable with the Spiking version.
 
 
 The rest of this document is the same as UpPoinTr but with slight adjustments for our model including the additional requirement of spikingjelly which was used to create the SNN.
